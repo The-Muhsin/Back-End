@@ -1,2 +1,3 @@
 node modules 
 ./src/config/config
+package-lock.json

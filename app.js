@@ -2,6 +2,7 @@
 
 const express = require('express');
 const signUpRoutes = require('./src/routes/signUpRoutes');
+const signInRoutes = require('./src/routes/signInRoutes');
 const connectDB = require('./db/dbConnection');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
@@ -11,6 +12,7 @@ const app = express();
 
 app.use(express.json());
 app.use('/api', signUpRoutes);
+app.use('/api', signInRoutes)
 
 connectDB();
 

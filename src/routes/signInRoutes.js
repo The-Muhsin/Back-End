@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const signInController = require('../controllers/signInController');
+const signInController = require('../controller/signInController');
 
 // Define the route for user sign-in
 router.post('/signin', signInController);

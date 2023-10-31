@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
     unique: true,
   },
   phoneNumber: {
-    type: Int32Array,
+    type: Number,
     required: true,
     unique: true,
   },

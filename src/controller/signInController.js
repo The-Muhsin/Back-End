@@ -1,4 +1,4 @@
-const User = require('../models/user');
+const User = require('../models/user').default;
 
 const signInController = async (req, res) => {
   const { email, password } = req.body;

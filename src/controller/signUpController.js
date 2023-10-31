@@ -1,6 +1,6 @@
 // signUpController.js
 
-const User = require('../models/user').default;
+const User = require('../models/user');
 
 const signUpController = async (req, res) => {
   const { email, phoneNumber, password, confirmPassword } = req.body;

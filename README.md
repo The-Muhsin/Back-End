@@ -1,14 +1,14 @@
 # The Muhsin Backend API Documentation
 
 
-* Create New User Using Get Request 
+* Create New User Using Post Request 
 * https://muhsin-test.onrender.com/api/signup/
 
 ```
 bash
 {
-    "username" : "Example",
     "email" : "Example@gmail.com",
+    "phoneNumber" : "08108823746",
     "password" : "Qwerrty123",
     "confirmPassword" :"Qwerty123" 
 }

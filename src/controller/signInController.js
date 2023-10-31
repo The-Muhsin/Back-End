@@ -11,7 +11,7 @@ const signInController = async (req, res) => {
     }
 
     if (user.password !== password) {
-      return res.status(401).json({ message: 'Invalid credentials' });
+      return res.status(401).json({ message: 'Invalid Password' });
     }
 
     res.status(200).json({ message: 'User signed in successfully', user });

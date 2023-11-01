@@ -46,9 +46,3 @@ const forgotPasswordController = async (req, res) => {
 
 module.exports = forgotPasswordController;
 
-// Add the route in app.js
-const forgotPasswordController = require('./path_to_forgotPasswordController');
-
-//...
-
-app.post('/api/forgotPassword', forgotPasswordController);

@@ -14,7 +14,9 @@ const app = express();
 app.use(express.json());
 app.use('/api', signUpRoutes);
 app.use('/api', signInRoutes);
-app.use('/api', forgetPasswordController)
+
+
+app.post('/api', forgetPasswordController)
 
 
 connectDB();

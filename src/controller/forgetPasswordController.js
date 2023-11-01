@@ -12,7 +12,7 @@ const forgotPasswordController = async (req, res) => {
     user.generatePasswordResetToken();
     await user.save();
 
-    const resetLink = `http://your-frontend-url/reset-password?token=${user.resetToken}`;
+    const resetLink = `https://muhsin-test.onrender.com/resetPassword/${user.resetToken}`;
     
     // Use Nodemailer to send the reset password link to the user's email
     const transporter = nodemailer.createTransport({

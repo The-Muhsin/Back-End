@@ -18,8 +18,19 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  resetToken: String,
+  resetTokenExpiration: Date
 });
 
+
+
+
+//Generate Password Reset Token and Expiration Date
+
+userSchema.methods.generatePasswordToken = function(){
+this.resetToken = crypto.randonBytes(20).toString('hex');
+this.resetTokemExpiration =  Date.now() + 3600000;
+}
 //Hashing the user password before saving it to the db
 
 userSchema.pre('save', async function (next) {

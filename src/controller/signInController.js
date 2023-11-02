@@ -1,3 +1,4 @@
+// signInController.js
 const User = require('../models/user');
 const bcrypt = require('bcrypt');
 
@@ -19,6 +20,7 @@ const signInController = async (req, res) => {
 
     res.status(200).json({ message: 'User signed in successfully', user });
   } catch (error) {
+    console.error('Error during sign-in:', error);
     res.status(500).json({ message: 'An error occurred', error: error.message });
   }
 };

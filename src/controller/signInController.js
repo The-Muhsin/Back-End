@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const bcrypt = require('bcrypt');
 
 const signInController = async (req, res) => {
   const { email, password } = req.body;
@@ -10,7 +11,9 @@ const signInController = async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    if (user.password !== password) {
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if (!passwordMatch) {
       return res.status(401).json({ message: 'Invalid Password' });
     }
 

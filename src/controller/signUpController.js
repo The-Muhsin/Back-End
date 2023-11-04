@@ -11,6 +11,7 @@ const signUpController = async (req, res) => {
 
   try {
     const hashedPassword = await bcrypt.hash(password, 10);
+    console.log('Hashed password before storing:', hashedPassword); // Add this line for debugging
     const user = await User.create({ email, phoneNumber, password: hashedPassword });
     res.status(201).json({ message: 'User created successfully', user });
   } catch (error) {

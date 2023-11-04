@@ -14,7 +14,7 @@ const signInController = async (req, res) => {
 
     console.log('Stored hashed password:', user.password); // Added this line for debugging
 
-    const passwordMatch = await bcrypt.compare(password, user.password);
+    const passwordMatch = await bcrypt.compareSync(password, user.password);
 
     console.log('Password Match Result:', passwordMatch); // Added this line for debugging
 

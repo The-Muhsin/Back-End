@@ -12,11 +12,11 @@ const signInController = async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
-    console.log('Stored hashed password:', user.password); // Add this line for debugging
+    console.log('Stored hashed password:', user.password); // Added this line for debugging
 
-    const passwordMatch = await bcrypt.compare(password, user.password);
+    const passwordMatch = await bcrypt.compare(password, user.hashedPassword);
 
-    console.log('Password Match Result:', passwordMatch); // Add this line for debugging
+    console.log('Password Match Result:', passwordMatch); // Added this line for debugging
 
     if (!passwordMatch) {
       return res.status(401).json({ message: 'Invalid Password' });

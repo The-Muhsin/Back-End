@@ -1,5 +1,7 @@
 // forgotPasswordController.js
 const nodemailer = require('nodemailer');
+const User = require('../models/user');
+
 
 const forgotPasswordController = async (req, res) => {
   const { email } = req.body;
@@ -43,6 +45,7 @@ const forgotPasswordController = async (req, res) => {
     res.status(500).json({ message: 'An error occurred', error: error.message });
   }
 };
+
 
 module.exports = forgotPasswordController;
 

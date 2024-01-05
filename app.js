@@ -16,7 +16,7 @@ app.use('/api', signUpRoutes);
 app.use('/api', signInRoutes);
 
 
-app.post('/api', forgetPasswordController)
+app.post('/api/forgetPassword', forgetPasswordController)
 
 
 connectDB();

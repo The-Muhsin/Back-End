@@ -1,4 +1,3 @@
-// signUpController.js
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
@@ -10,7 +9,7 @@ const signUpController = async (req, res) => {
   }
 
   try {
-    const hashedPassword = bcrypt.hashSync(password, 10);
+    const hashedPassword = await bcrypt.hash(password, 10); // Use async version of bcrypt.hash
     console.log('Hashed password before storing:', hashedPassword); // Add this line for debugging
     const user = await User.create({ email, phoneNumber, password: hashedPassword });
     res.status(201).json({ message: 'User created successfully', user });

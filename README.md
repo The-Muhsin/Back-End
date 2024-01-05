@@ -15,7 +15,7 @@ bash
 
 ```
 
-* Sign in Using Get Request 
+* Sign in Using POST Request 
 * https://muhsin-test.onrender.com/api/signin/
 
 ```

@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-
+const crypto = require('crypto');
 
 const userSchema = new mongoose.Schema({
-
   email: {
     type: String,
     required: true,
@@ -22,17 +21,13 @@ const userSchema = new mongoose.Schema({
   resetTokenExpiration: Date
 });
 
-
-
-
-//Generate Password Reset Token and Expiration Date
-
+// Generate Password Reset Token and Expiration Date
 userSchema.methods.generatePasswordToken = function(){
-this.resetToken = crypto.randonBytes(20).toString('hex');
-this.resetTokemExpiration =  Date.now() + 3600000;
+  this.resetToken = crypto.randomBytes(20).toString('hex');
+  this.resetTokenExpiration = Date.now() + 3600000;
 }
-//Hashing the user password before saving it to the db
 
+// Hashing the user password before saving it to the db
 userSchema.pre('save', async function (next) {
   const user = this;
   if (user.isModified('password') || user.isNew) {
@@ -43,11 +38,15 @@ userSchema.pre('save', async function (next) {
       next();
     } catch (error) {
       return next(error);
-      } 
-    }
-  else {
+    } 
+  } else {
     return next();
   }
 });
+
+userSchema.methods.isPasswordMatch = async function(password) {
+  const user = this;
+  return await bcrypt.compare(password, user.password);
+}
 
 module.exports = mongoose.model('User', userSchema);

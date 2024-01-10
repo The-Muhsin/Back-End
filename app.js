@@ -3,6 +3,7 @@
 const express = require('express');
 const signUpRoutes = require('./src/routes/signUpRoutes');
 const signInRoutes = require('./src/routes/signInRoutes');
+const authRoute = require('./src/routes/auth.route');
 const forgetPasswordController = require('./src/controller/forgetPasswordController');
 const connectDB = require('./db/dbConnection');
 const passport = require('passport');
@@ -12,6 +13,7 @@ const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = require('./src/config/config'
 const app = express();
 
 app.use(express.json());
+app.use('/api/auth', authRoute)
 app.use('/api', signUpRoutes);
 app.use('/api', signInRoutes);
 
